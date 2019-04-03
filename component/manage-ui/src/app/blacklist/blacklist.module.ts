@@ -1,32 +1,25 @@
 import {NgModule} from '@angular/core';
-import {BlackListRoutes} from './blacklist.routes';
-import {ApiBlacklistMainComponent} from './apiwise/apiblacklist-main/apiblacklist-main.component';
-import {SpBlacklistMainComponent} from './spwise/spblacklist-main/spblacklist-main.component'
 import {CommonModule} from '@angular/common';
+import {BlacklistRoutes} from './blacklist.routes';
+import {SharedModule} from '../shared/shared.module';
+import {BlacklistMainComponent} from './blacklist-main/blacklist-main.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import {SharedModule} from '../shared/shared.module';
-import { ApiBlacklistListComponent } from './apiwise/apiblacklist-list/apiblacklist-list.component';
+import {TooltipModule} from 'ngx-bootstrap/tooltip';
 
 @NgModule({
-
     imports: [
         CommonModule,
-        BlackListRoutes,
+        BlacklistRoutes,
+        SharedModule,
         FormsModule,
         ReactiveFormsModule,
-        SharedModule,
-        ModalModule.forRoot()
+        ModalModule.forRoot(),
+        TooltipModule.forRoot()
     ],
-
     declarations: [
-        ApiBlacklistMainComponent,
-        ApiBlacklistListComponent,
-        SpBlacklistMainComponent
-    ]
-
+        BlacklistMainComponent
+        ]
 })
-
-export class BlackListModule {
-
+export class BlacklistModule {
 }

@@ -1,25 +1,9 @@
-import { ApiBlacklistMainComponent } from './apiwise/apiblacklist-main/apiblacklist-main.component';
-import { SpBlacklistMainComponent } from './spwise/spblacklist-main/spblacklist-main.component';
-import { RouterModule } from '@angular/router';
-import { PermissionGuard } from 'app/app.guard';
+import {RouterModule} from '@angular/router';
+import {BlacklistMainComponent} from './blacklist-main/blacklist-main.component';
 
-const routes = [
-    {
-        path: 'apiwise',
-        component: ApiBlacklistMainComponent,
-        canActivate: [PermissionGuard],
-        data: {
-            permissions: 'apiBlacklist'
-        }
-    },
-    {
-        path: 'spwise',
-        component: SpBlacklistMainComponent,
-        canActivate: [PermissionGuard],
-        data: {
-            permissions: 'spBlackList'
-        }
-    },
-];
+const routes =[{
+  path : '',
+  component : BlacklistMainComponent
+}];
 
-export const BlackListRoutes = RouterModule.forChild(routes);
+export const BlacklistRoutes = RouterModule.forChild(routes);

@@ -25,11 +25,12 @@ export class MainMenuComponent implements OnInit {
         { id: 8, route: '/rate/create', name: 'Create Rate', position: 'child', iconName: 'assignment', pattern: 'rate:add' },
         { id: 9, route: '/rate/assign', name: 'Assign Rate', position: 'child', iconName: 'assignment_turned_in', pattern: 'rate:assign' },
         { id: 10, route: '/quotacap', name: 'Quota Cap', position: 'parent', iconName: 'card_travel', pattern: 'quota:visible' },
-        { id: 11, route: '/', name: 'Blacklist', position: 'parent has-child', iconName: 'phonelink_erase', pattern: 'apiBlacklist,spBlackList' },
-        { id: 12, route: '/blacklist/apiwise', name: 'API Wise Blacklist', position: 'child', iconName: 'developer_board', pattern: 'apiBlacklist' },
-        { id: 13, route: '/blacklist/spwise', name: 'Sp Wise Blacklist', position: 'child', iconName: 'dns', pattern: 'spBlackList' },
-        { id: 14, route: '/whitelist', name: 'Whitelist', position: 'parent', iconName: 'phonelink_ring', pattern: 'whiteList' },
-        { id: 15, route: '/edit-subscription', name: 'Subscription', position: 'parent', iconName: 'assignment', pattern: 'edit-subscription' }
+        { id: 11, route: '/blacklist', name: 'Blacklist', position: 'parent', iconName: 'phonelink_erase', pattern: 'apiBlacklist,spBlackList' },
+        // { id: 12, route: '/', name: 'Blacklist', position: 'parent has-child', iconName: 'phonelink_erase', pattern: 'apiBlacklist,spBlackList' },
+        // { id: 13, route: '/blacklist/apiwise', name: 'API Wise Blacklist', position: 'child', iconName: 'developer_board', pattern: 'apiBlacklist' },
+        // { id: 14, route: '/blacklist/spwise', name: 'Sp Wise Blacklist', position: 'child', iconName: 'dns', pattern: 'spBlackList' },
+        { id: 15, route: '/whitelist', name: 'Whitelist', position: 'parent', iconName: 'phonelink_ring', pattern: 'whiteList' },
+        { id: 16, route: '/edit-subscription', name: 'Subscription', position: 'parent', iconName: 'assignment', pattern: 'edit-subscription' }
     ];
 
 

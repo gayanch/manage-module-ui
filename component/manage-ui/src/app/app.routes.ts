@@ -60,9 +60,17 @@ const routes = [
       permissions: 'application,subscription'
     }
   },
+  // {
+  //   path: 'blacklist',
+  //   loadChildren: 'app/blacklist/blacklist.module#BlackListModule',
+  //   canActivate: [PermissionGuard],
+  //   data: {
+  //     permissions: 'apiBlacklist,spBlackList'
+  //   }
+  // },
   {
     path: 'blacklist',
-    loadChildren: 'app/blacklist/blacklist.module#BlackListModule',
+    loadChildren: 'app/blacklist/blacklist.module#BlacklistModule',
     canActivate: [PermissionGuard],
     data: {
       permissions: 'apiBlacklist,spBlackList'

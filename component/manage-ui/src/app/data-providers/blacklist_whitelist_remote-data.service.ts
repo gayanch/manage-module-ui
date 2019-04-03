@@ -24,8 +24,9 @@ export class BlackListWhiteListRemoteDataService {
         blacklist: this.apiContext + 'GetBlacklistPerApi/',
         addNewWhitelist: this.apiContext + 'Whitelist',
         addNewBlacklist: this.apiContext + 'Blacklist',
+        getBlacklistedMsisdns: this.apiContext + 'Blacklist',
         removeFromWhiteList: this.apiContext + 'RemoveFromWhiteList/',
-        removeFromBlackList: this.apiContext + 'RemoveFromBlacklist/',
+        removeFromBlackList: this.apiContext + 'Blacklist/',
         msisdnValidation: this.externalApiContext + 'validation/msisdn'
     };
     
@@ -150,13 +151,14 @@ export class BlackListWhiteListRemoteDataService {
      * @param id
      * @returns {Observable<R|T>}
      */
-    getBlacklist(id: string) {
-        return this.http.get(this.apiEndpoints['blacklist'] + id, this.getOptions())
+    getBlacklist(serviceProvider: string, appId: string, apiId: string, page: number) {
+        let data = "?spName=" + serviceProvider + "&appId=" + appId + "&apiId=" + apiId + "&page=" + page;
+        return this.http.get(this.apiEndpoints['getBlacklistedMsisdns'] + data, this.getOptions())
             .map((response: Response) => {
                 return {
                     success: true,
                     message: 'Blacklist Number List Loaded Successfully',
-                    payload: response.json()
+                    payload: response.json()["variables"]
                 };
             })
             .catch((error: Response) => Observable.throw({
@@ -202,11 +204,12 @@ export class BlackListWhiteListRemoteDataService {
      * @param mssidns
      * @returns {Observable<R>}
      */
-    removeFromBlackList(mssidn: string, apiId: string) {
+    removeFromBlackList(spName: string, appId: string, apiId: string, msisdn: string) {
         const data = {
             'apiId': apiId
         };
-        return this.http.post(this.apiEndpoints['removeFromBlackList'] + mssidn, data, this.getOptions())
+        let endpoint = this.apiEndpoints['removeFromBlackList'] + spName + "/" + appId + "/" + apiId + "/" + msisdn;
+        return this.http.delete(endpoint, this.getOptions())
             .map((response: Response) => {
                 if (response.status == 200) {
                     return {
@@ -278,8 +281,10 @@ export class BlackListWhiteListRemoteDataService {
      * @param msisdnList
      * @returns {Observable<R>}
      */
-    addNewToBlacklist(apiId: string, apiName: string, msisdnList: string[], validationRegex: string, validationPrefixGroup: number, validationDigitsGroup: number) {
+    addNewToBlacklist(spName: string, appId: string, apiId: string, apiName: string, msisdnList: string[], validationRegex: string, validationPrefixGroup: number, validationDigitsGroup: number) {
         const data = {
+            'spName': spName,
+            'appID': appId,
             'apiID': apiId,
             'apiName': apiName,
             'userID': this.loginInfo.userName,

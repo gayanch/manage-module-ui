@@ -71,8 +71,8 @@ export class BlackListWhiteListService {
             );
     }
 
-    getBlacklist(id: string, callback: Function) {
-        this._remoteService.getBlacklist(id)
+    getBlacklist(serviceProvicer: string, appId: string, apiId: string, page: number, callback: Function) {
+        this._remoteService.getBlacklist(serviceProvicer, appId, apiId, page)
             .subscribe(
                 data => {
                     callback(data);
@@ -95,8 +95,8 @@ export class BlackListWhiteListService {
             );
     }
 
-    removeFromBlackList(msisdn, id, callback: Function) {
-        this._remoteService.removeFromBlackList(msisdn, id)
+    removeFromBlackList(spName: string, appId: string, apiId: string, msisdn: string, callback: Function) {
+        this._remoteService.removeFromBlackList(spName, appId, apiId, msisdn)
             .subscribe(
                 data => {
                     callback(data);
@@ -120,9 +120,9 @@ export class BlackListWhiteListService {
             );
     }
 
-    addNewToBlacklist(apiId: string, apiName: string, msisdnList: string[],
+    addNewToBlacklist(spName: string, appId: string, apiId: string, apiName: string, msisdnList: string[],
                           validationRegex: string, validationPrefixGroup: number, validationDigitsGroup: number, callback: Function) {
-        this._remoteService.addNewToBlacklist(apiId, apiName, msisdnList, validationRegex, validationPrefixGroup, validationDigitsGroup)
+        this._remoteService.addNewToBlacklist(spName, appId, apiId, apiName, msisdnList, validationRegex, validationPrefixGroup, validationDigitsGroup)
             .subscribe(
                 data => {
                     callback(data);
